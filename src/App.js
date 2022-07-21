@@ -3,13 +3,19 @@ import "./styles.css";
 
 export default function App() {
   const [input, setInput] = useState({
-    input1: "",
-    input2: "",
-    input3: "",
-    area: ""
+    text: "",
+    number: 0,
+    range: 50,
+    checkbox: false,
+    area: "",
+    text2: ""
   });
   const handleInput = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleCheckbox = (e) => {
+    setInput((prev) => ({ ...prev, checkbox: e.target.checked }));
   };
 
   const handleSubmit = (e) => {
@@ -28,42 +34,49 @@ export default function App() {
           alignItems: "center"
         }}
       >
-        <div className="input">
-          <label>input1: </label>
-          <input
-            type="text"
-            name="input1"
-            value={input.input1}
-            onChange={handleInput}
-          />
-        </div>
-        <div className="input">
-          <label>input2: </label>
-          <input
-            type="text"
-            name="input2"
-            value={input.input2}
-            onChange={handleInput}
-          />
-        </div>
-        <div className="input">
-          <label>input3: </label>
-          <input
-            type="text"
-            name="input3"
-            value={input.input3}
-            onChange={handleInput}
-          />
-        </div>
-        <div className="input">
-          <label>area:</label>
-          <textarea
-            rows={3}
-            name="area"
-            value={input.area}
-            onChange={handleInput}
-          />
-        </div>
+        <input
+          type="text"
+          name="text"
+          value={input.text}
+          onChange={handleInput}
+          placeholder="text"
+        />
+        <input
+          type="number"
+          name="number"
+          value={input.number}
+          onChange={handleInput}
+          placeholder="number"
+        />
+        <input
+          type="range"
+          name="range"
+          value={input.range}
+          onChange={handleInput}
+          min={0}
+          max={100}
+        />
+        <input
+          type="checkbox"
+          id="scales"
+          name="checkbox"
+          checked={input.checkbox}
+          onChange={handleCheckbox}
+        />
+        <textarea
+          rows={3}
+          name="area"
+          value={input.area}
+          onChange={handleInput}
+          placeholder="area"
+        />
+        <input
+          type="text"
+          name="text2"
+          value={input.text2}
+          onChange={handleInput}
+          placeholder="text2"
+        />
         <input type="submit" style={{ width: "50vw" }} />
       </form>
     </div>
